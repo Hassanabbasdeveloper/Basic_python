@@ -1,0 +1,8 @@
+# Undo Action Stack (Pop)
+
+actions = ["Type 'Hello'", "Make Bold", "Insert Table"]
+
+removed_action = actions.pop()
+
+print("Removed Action:", removed_action)
+print("Updated Actions List:", actions)

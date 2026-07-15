@@ -1,0 +1,6 @@
+# Single-Element Config Entry
+
+deployment_mode = ("Production",)
+
+print(deployment_mode)
+print(type(deployment_mode))

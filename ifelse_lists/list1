@@ -1,0 +1,10 @@
+# E-Commerce Shopping Cart
+
+cart = []
+
+cart.append("Eggs")
+cart.append("Milk")
+cart.append("Bread")
+
+print("Cart Items:", cart)
+print("Total Items:", len(cart))

@@ -1,0 +1,9 @@
+# Latency Monitor (Max/Min)
+
+latencies = [120, 85, 200, 95, 150]
+
+fastest = min(latencies)
+slowest = max(latencies)
+
+print("Fastest Query Time:", fastest, "ms")
+print("Slowest Query Time:", slowest, "ms")

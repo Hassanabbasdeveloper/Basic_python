@@ -1,0 +1,7 @@
+# Leaderboard Slicing
+
+scores = [980, 920, 890, 850, 800, 750]
+
+top_scores = scores[0:3]
+
+print("Top 3 Scores:", top_scores)
