@@ -1,0 +1,9 @@
+# Question 08: Expression vs Statement Identification
+
+# Snippet A (Expression)
+x = 10
+print(x - 8)
+
+# Snippet B (Statement)
+x = 10
+print(x)
