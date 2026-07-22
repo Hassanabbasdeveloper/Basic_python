@@ -1,0 +1,42 @@
+# Create Portfolio class
+class Portfolio:
+
+    # Constructor
+    def __init__(self, cash, stock_value):
+
+        # Store cash amount
+        self.cash = cash
+
+        # Store stock value
+        self.stock_value = stock_value
+
+    # Overload + operator
+    def __add__(self, other):
+
+        # Add cash values
+        total_cash = self.cash + other.cash
+
+        # Add stock values
+        total_stock = self.stock_value + other.stock_value
+
+        # Return new Portfolio object
+        return Portfolio(total_cash, total_stock)
+
+    # String representation
+    def __str__(self):
+
+        # Return formatted output
+        return f"Portfolio(cash={self.cash}, stock_value={self.stock_value})"
+
+
+# Create first portfolio
+p1 = Portfolio(5000, 12000)
+
+# Create second portfolio
+p2 = Portfolio(3000, 4000)
+
+# Merge portfolios
+result = p1 + p2
+
+# Print merged portfolio
+print(result)

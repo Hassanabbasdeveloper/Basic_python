@@ -1,0 +1,12 @@
+# Smart Traffic Control System
+
+light = input("Enter traffic light color (Red, Yellow, Green): ")
+
+if light == "Red":
+    print("Stop your vehicle")
+elif light == "Yellow":
+    print("Slow Down")
+elif light == "Green":
+    print("Go")
+else:
+    print("Invalid traffic light color")
