@@ -1,7 +1,0 @@
-# Server Price Revision (Mutability)
-
-prices = [1200, 1500, 2000]
-
-prices[1] = 1800
-
-print("Updated Price List:", prices)

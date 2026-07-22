@@ -1,9 +1,0 @@
-# Question 02: Banned Keyword Check (Naming Rules)
-
-# This will cause an error because 'for' is a reserved keyword.
-# for = "Admin"
-
-# Correct variable name
-user_role = "Admin"
-
-print("User Role:", user_role)

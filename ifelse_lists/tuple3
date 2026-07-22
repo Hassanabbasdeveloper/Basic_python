@@ -1,9 +1,0 @@
-# System Log Auditor
-
-access_logs = (101, 105, 101, 102, 101, 108, 105)
-
-count_101 = access_logs.count(101)
-index_102 = access_logs.index(102)
-
-print("User ID 101 accessed:", count_101, "times")
-print("User ID 102 first found at index:", index_102)
