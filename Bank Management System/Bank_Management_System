@@ -1,0 +1,152 @@
+# ==========================================
+# Bank Management System (Industrial OOP)
+# ==========================================
+
+class BankAccount:
+    # Private class variable to count total accounts
+    __total_accounts = 0
+
+    # Constructor
+    def __init__(self, owner, initial_deposit):
+        # Store account owner's name
+        self.owner = owner
+
+        # Generate account number automatically
+        self.__account_no = BankAccount.__total_accounts + 1001
+
+        # Private balance variable
+        self.__balance = 0
+
+        # Increase total account count
+        BankAccount.__total_accounts += 1
+
+        # Validate initial deposit
+        self.set_balance(initial_deposit)
+
+    # ----------------------------
+    # Getter Method
+    # ----------------------------
+    def get_balance(self):
+        # Return current balance
+        return self.__balance
+
+    # ----------------------------
+    # Setter Method
+    # ----------------------------
+    def set_balance(self, amount):
+        # Check if amount is int or float
+        if not isinstance(amount, (int, float)):
+            print("Invalid Transaction Type")
+            return
+
+        # Check if amount is positive
+        if amount < 0:
+            print("Balance cannot be negative.")
+            return
+
+        # Store balance
+        self.__balance = amount
+
+    # ----------------------------
+    # Deposit Method
+    # ----------------------------
+    def set_deposit(self, amount):
+        # Check datatype
+        if not isinstance(amount, (int, float)):
+            print("Invalid Transaction Type")
+            return
+
+        # Check positive value
+        if amount <= 0:
+            print("Invalid Transaction Type")
+            return
+
+        # Add amount into balance
+        self.__balance += amount
+
+        print(f"Deposit Successful! New Balance = {self.__balance}")
+
+    # ----------------------------
+    # Withdraw Method
+    # ----------------------------
+    def withdraw(self, amount):
+        # Validate datatype
+        if not isinstance(amount, (int, float)):
+            print("Invalid Transaction Type")
+            return
+
+        # Validate amount
+        if amount <= 0:
+            print("Invalid Transaction Type")
+            return
+
+        # Check sufficient balance
+        if amount > self.__balance:
+            print("Transaction Declined")
+            return
+
+        # Deduct amount
+        self.__balance -= amount
+
+        print(f"Withdrawal Successful! Remaining Balance = {self.__balance}")
+
+    # ----------------------------
+    # Display Account Details
+    # ----------------------------
+    def display_account(self):
+        print("\n------ Account Details ------")
+        print("Owner Name :", self.owner)
+        print("Account No :", self.__account_no)
+        print("Balance    :", self.__balance)
+
+    # ----------------------------
+    # Static Method
+    # ----------------------------
+    @staticmethod
+    def total_accounts():
+        # Display total accounts
+        print("Total Accounts:", BankAccount.__total_accounts)
+
+
+# ==========================================
+# Driver Code
+# ==========================================
+
+# Create first account
+acc1 = BankAccount("Hassan Abbas", 5000)
+
+# Show account details
+acc1.display_account()
+
+# Deposit money
+acc1.set_deposit(2000)
+
+# Withdraw money
+acc1.withdraw(1000)
+
+# Try invalid deposit (String)
+acc1.set_deposit("Hello")
+
+# Try negative deposit
+acc1.set_deposit(-500)
+
+# Try invalid withdrawal
+acc1.withdraw(10000)
+
+# Check balance using getter
+print("Current Balance:", acc1.get_balance())
+
+# Try direct modification (Not Recommended)
+# acc1.__balance = 99999
+
+# Actual balance remains unchanged
+print("Secure Balance:", acc1.get_balance())
+
+# Create second account
+acc2 = BankAccount("Ali", 3000)
+
+# Display second account
+acc2.display_account()
+
+# Display total accounts
+BankAccount.total_accounts()
