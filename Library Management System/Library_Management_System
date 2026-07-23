@@ -1,0 +1,162 @@
+# ==========================================
+# Library Management System (Industrial OOP)
+# ==========================================
+
+# ----------------------------
+# Book Class
+# ----------------------------
+class Book:
+
+    # Constructor
+    def __init__(self, title, author):
+        # Store book title
+        self.title = title
+
+        # Store author name
+        self.author = author
+
+        # Private availability status
+        self.__is_available = True
+
+    # Getter Method
+    def get_availability(self):
+        # Return availability status
+        return self.__is_available
+
+    # Setter Method
+    def set_availability(self, status):
+        # Check datatype
+        if isinstance(status, bool):
+            self.__is_available = status
+        else:
+            print("Invalid Status")
+
+    # Display Book Details
+    def display_book(self):
+        print("\n------ Book Details ------")
+        print("Title :", self.title)
+        print("Author:", self.author)
+        print("Available:", self.__is_available)
+
+
+# ----------------------------
+# Library Class (Aggregation)
+# ----------------------------
+class Library:
+
+    # Constructor
+    def __init__(self, library_name):
+        self.library_name = library_name
+
+        # List of Book Objects
+        self.books = []
+
+    # Add Book
+    def add_book(self, book):
+        self.books.append(book)
+        print(f"{book.title} added successfully.")
+
+    # Show Books
+    def show_books(self):
+        print(f"\nBooks in {self.library_name}\n")
+
+        for book in self.books:
+            status = "Available" if book.get_availability() else "Issued"
+
+            print(f"{book.title} - {book.author} - {status}")
+
+
+# ----------------------------
+# Member Base Class
+# ----------------------------
+class Member:
+
+    def __init__(self, name):
+        self.name = name
+
+    # Parent Method
+    def borrow_limit(self):
+        print("General Member")
+
+
+# ----------------------------
+# Student Member
+# ----------------------------
+class StudentMember(Member):
+
+    # Method Overriding
+    def borrow_limit(self):
+        print(f"{self.name} can borrow maximum 2 books.")
+
+
+# ----------------------------
+# Teacher Member
+# ----------------------------
+class TeacherMember(Member):
+
+    # Method Overriding
+    def borrow_limit(self):
+        print(f"{self.name} can borrow maximum 5 books.")
+
+
+# ----------------------------
+# Library Member
+# ----------------------------
+class LibraryMember:
+
+    def __init__(self, name):
+        self.name = name
+
+    # Object Interaction
+    def borrow_book(self, book_object):
+
+        # Check availability
+        if book_object.get_availability():
+
+            # Update status
+            book_object.set_availability(False)
+
+            return "Book Issued"
+
+        else:
+            return "Out of Stock"
+
+
+# ==========================================
+# Driver Code
+# ==========================================
+
+# Create Books
+book1 = Book("Python Programming", "Ali Ahmed")
+book2 = Book("Data Structures", "Usman Khan")
+
+# Create Library
+library = Library("City Library")
+
+# Add Books
+library.add_book(book1)
+library.add_book(book2)
+
+# Show Books
+library.show_books()
+
+# Create Library Member
+member1 = LibraryMember("Hassan")
+
+# Borrow Book
+print("\n", member1.borrow_book(book1))
+
+# Try Again
+print(member1.borrow_book(book1))
+
+# Show Updated Books
+library.show_books()
+
+# Polymorphism
+student = StudentMember("Areeba")
+teacher = TeacherMember("Sir Aslam")
+
+print()
+
+student.borrow_limit()
+teacher.borrow_limit()
