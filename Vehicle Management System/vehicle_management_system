@@ -1,0 +1,87 @@
+# ==========================================
+# Vehicle Management System (Industrial OOP)
+# ==========================================
+
+# ----------------------------
+# Parent Class
+# ----------------------------
+class Vehicle:
+
+    # Constructor
+    def __init__(self, brand, model, price):
+        # Store vehicle brand
+        self.brand = brand
+
+        # Store vehicle model
+        self.model = model
+
+        # Store vehicle price
+        self.price = price
+
+    # Display Vehicle Details
+    def display_details(self):
+        print("\n----------------------------")
+        print("Brand :", self.brand)
+        print("Model :", self.model)
+        print("Price :", self.price)
+
+
+# ----------------------------
+# Gas Car Class
+# ----------------------------
+class GasCar(Vehicle):
+
+    # Constructor Chaining
+    def __init__(self, brand, model, price):
+        # Call parent constructor
+        super().__init__(brand, model, price)
+
+    # Method Overriding
+    def get_fuel_efficiency(self):
+        return "Fuel Efficiency : 18 km/L"
+
+    # Tax Calculation
+    def calculate_tax(self):
+        return self.price * 0.15
+
+
+# ----------------------------
+# Electric Car Class
+# ----------------------------
+class ElectricCar(Vehicle):
+
+    # Constructor Chaining
+    def __init__(self, brand, model, price):
+        # Call parent constructor
+        super().__init__(brand, model, price)
+
+    # Method Overriding
+    def get_fuel_efficiency(self):
+        return "Fuel Efficiency : 250 km per Charge"
+
+    # Tax Calculation
+    def calculate_tax(self):
+        return 0
+
+
+# ==========================================
+# Driver Code
+# ==========================================
+
+# Create Objects
+car1 = GasCar("Toyota", "Corolla", 5000000)
+car2 = ElectricCar("Tesla", "Model 3", 12000000)
+car3 = GasCar("Honda", "Civic", 6500000)
+car4 = ElectricCar("BYD", "Seal", 9000000)
+
+# Unified List
+fleet_list = [car1, car2, car3, car4]
+
+# Runtime Polymorphism
+for car in fleet_list:
+
+    car.display_details()
+
+    print(car.get_fuel_efficiency())
+
+    print("Tax :", car.calculate_tax())
